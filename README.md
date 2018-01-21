@@ -14,12 +14,16 @@ ____
  - Track your time on the internet 
  - Share your daily surfing time on social media
  - Alerts you when you exceed the maximum surf time alloted by you over a particular website :bell:
- - Keeps track of the data you use over the internet. Tells you about the amount of data used per site.
  - Measure your internet data transfer speed.
- - Don't worry about passwords as we bring to you face recognition and authentication. Cool huh ?
- - View others time on the net too!
 
 __________
+
+## Future Targets
+ - Keeps track of the data you use over the internet. Tells you about the amount of data used per site.
+ - View others time on the net too!
+ - Don't worry about passwords as we bring to you face recognition and authentication. Cool huh ?
+__________
+
 
 ## Meet the creators :
  - Soumya Himanish Mohapatra
