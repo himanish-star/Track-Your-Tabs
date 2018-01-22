@@ -1,0 +1,31 @@
+html, body, h1, h2, h3, h4, h5 {
+  font-family: "Open Sans", sans-serif
+}
+
+#notificationDropdown {
+  width: 300px;
+}
+
+#avatarProfile {
+  height: 23px;
+  width: 23px;
+}
+
+#pageContainer {
+  max-width: 1400px;
+  margin-top: 80px;
+}
+
+#avatarMain {
+  height: 106px;
+  width: 106px;
+}
+
+#followers-following {
+  height: 200px;
+}
+
+.dashboardNewsAvatar {
+  height: 60px;
+  width: 60px;
+}
