@@ -1,0 +1,27 @@
+{
+  "name": "track-your-tabs",
+  "version": "1.0.0",
+  "description": "[![Join the chat at https://gitter.im/Track-Your-Tabs/Lobby](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Track-Your-Tabs/Lobby)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shikhar-scs/Track-Your-Tabs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shikhar-scs/Track-Your-Tabs/issues"
+  },
+  "homepage": "https://github.com/shikhar-scs/Track-Your-Tabs#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "eslint": "^4.16.0",
+    "eslint-config-google": "^0.9.1"
+  }
+}
