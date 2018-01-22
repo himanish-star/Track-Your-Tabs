@@ -1,0 +1,5 @@
+{
+  "server": {
+    "SERVERPORT": 3000
+  }
+}
