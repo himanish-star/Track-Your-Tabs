@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const server = require('./config.json').server;
+
 const routes = {
   dashboard: require('./routes/dashboard').route
 };
