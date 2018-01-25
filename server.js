@@ -7,7 +7,10 @@ const routes = {
 };
 
 
-app.use('/',express.static(path.join(__dirname,'frontend')));
+app.use('/',express.static(path.join(__dirname,'frontend')),
+  (req,res) => {
+    res.status(404).sendFile(path.join(__dirname,'./frontend/templates/404Error.html'));
+});
 app.use('/dashboard',routes.dashboard);
 
 app.listen(server.SERVERPORT, () => {
