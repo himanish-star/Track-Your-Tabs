@@ -1,4 +1,3 @@
-
 chrome.runtime.onMessage.addListener(function (message) {
   let messageAction = message.action;
 

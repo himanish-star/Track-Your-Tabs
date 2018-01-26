@@ -8,9 +8,9 @@ const routes = {
 };
 
 
-app.use('/',express.static(path.join(__dirname,'frontend')),
+app.use('/',express.static(path.join(__dirname,'chromeExtension/frontend')),
   (req,res) => {
-    res.status(404).sendFile(path.join(__dirname,'./frontend/templates/404Error.html'));
+    res.status(404).sendFile(path.join(__dirname,'./chromeExtension/frontend/templates/404Error.html'));
 });
 app.use('/dashboard',routes.dashboard);
 
