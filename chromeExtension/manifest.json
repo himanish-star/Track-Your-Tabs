@@ -3,13 +3,13 @@
   "version": "1.0",
   "manifest_version": 2,
   "browser_action": {
-    "default_icon": "./popup/TYTLogo128.png",
+    "default_icon": "./popup/logoIcons/TYTLogo128.png",
     "default_popup": "./popup/popup.html"
   },
   "icons": {
-    "16": "./popup/TYTLogo16.png",
-    "48": "./popup/TYTLogo48.png",
-    "128": "./popup/TYTLogo128.png" },
+    "16": "./popup/logoIcons/TYTLogo16.png",
+    "48": "./popup/logoIcons/TYTLogo48.png",
+    "128": "./popup/logoIcons/TYTLogo128.png" },
   "permissions": [
     "tabs"
   ],

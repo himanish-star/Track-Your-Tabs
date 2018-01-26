@@ -3,8 +3,8 @@ $(function () {
   let openHome = $('#openHome');
 
   openHome.click(function () {
-    chrome.tabs.create({
-      url: "../frontend/index.html"
-    })
+    chrome.runtime.sendMessage({
+      action: 'open home page'
+    });
   })
 });
