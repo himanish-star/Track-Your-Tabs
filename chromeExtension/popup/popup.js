@@ -6,5 +6,5 @@ $(function () {
     chrome.runtime.sendMessage({
       action: 'open home page'
     });
-  })
+  });
 });
