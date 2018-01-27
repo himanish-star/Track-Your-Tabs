@@ -26,19 +26,21 @@ window.onload = function () {
           <br>
           <img src="${tabsData[tab].favIconUrl}" alt="Avatar" class="dashboardNewsAvatar w3-left w3-circle w3-margin-right">
           <h4>${tabsData[tab].title}</h4><br>
-          <hr class="w3-clear">
+          <!--<hr class="w3-clear">
           <p>
             Total time spent in this week : {{time}}
             <br>
             Number of times opened in a day : {{times}}
           </p>
           <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-area-chart"></i>  View analysis</button>
-          <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-bell"></i>  Check your surf limits</button>
-        </div>      
+          <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-bell"></i>  Check your surf limits</button>-->
+        </div>
       `);
       currentTabs.append(newTab);
     }
   }
+  
+  
 
 
   let followersButton = document.getElementById('followers'),
