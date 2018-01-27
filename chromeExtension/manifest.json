@@ -14,8 +14,10 @@
     "tabs"
   ],
   "background": {
-    "scripts": ["eventHandler.js","tabs.js"],
+    "scripts": [
+      "backend/eventHandler.js",
+      "backend/tabs.js"
+    ],
     "persistent": false
-  },
-  "content_security_policy": "script-src 'self' https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js; object-src 'self'"
+  }
 }

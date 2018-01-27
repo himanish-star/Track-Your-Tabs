@@ -1,17 +1,18 @@
 
 chrome.runtime.onMessage.addListener(function (message) {
-
 	let messageAction = message.action;
 
-	if(messageAction === 'window loaded') {
-		sendData();
+	switch (messageAction) {
+		case 'fetch tabs':
+			sendData();
+			break;
 	}
 });
 
 chrome.tabs.onActivated.addListener(sendData);
+chrome.tabs.onRemoved.addListener(sendData);
 
-function sendData () {
-
+function sendData() {
 	chrome.windows.getAll({"populate": true}, getWindows);
 
   function getWindows(windows) {
@@ -21,14 +22,9 @@ function sendData () {
     		listOfTabs.push(tabs);
 			}
 		}
-		getTabs(listOfTabs);
-  }
-	
-	function getTabs(tabs) {
-		let allInfo = JSON.stringify(tabs);
 		chrome.runtime.sendMessage({
-			action: 'info',
-			data: allInfo
-		});
-	}
+			action: 'tabs fetched',
+			tabs: listOfTabs
+		})
+  }
 }
