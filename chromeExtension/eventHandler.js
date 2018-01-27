@@ -8,13 +8,13 @@ chrome.runtime.onMessage.addListener(function (message) {
       });
       break;
     case 'open dashboard':
-      chrome.tabs.query({'active': true}, function(tabs) {
+      chrome.tabs.query({'currentWindow':true, 'active': true}, function(tabs) {
         chrome.tabs.update(tabs[0].id, {url: "./frontend/templates/dashboard.html"});
       });
       break;
     case 'open profile':
-      chrome.tabs.query({'active': true}, function(tabs) {
-        chrome.tabs.update(tabs[0].id, {url: "./frontend/templates/404Error.html"});
+      chrome.tabs.query({'currentWindow':true, 'active': true}, function(tabs) {
+        chrome.tabs.update(tabs[0].id, {url: "./frontend/templates/profile.html"});
       });
       break;
   }

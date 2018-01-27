@@ -1,7 +1,10 @@
+
 chrome.runtime.onMessage.addListener(function (message) {
-	
-	if(message.action === 'window loaded') {
-		sendData()
+
+	let messageAction = message.action;
+
+	if(messageAction === 'window loaded') {
+		sendData();
 	}
 });
 
@@ -9,19 +12,23 @@ chrome.tabs.onActivated.addListener(sendData);
 
 function sendData () {
 
-	chrome.windows.getCurrent(getWindows);
-	
-	function getWindows(win) {
-		targetWindow = win;
-		chrome.tabs.getAllInWindow(targetWindow.id, getTabs);
-	}
+	chrome.windows.getAll({"populate": true}, getWindows);
+
+  function getWindows(windows) {
+    let listOfTabs = [];
+    for(let window of windows) {
+    	for(let tabs of window.tabs) {
+    		listOfTabs.push(tabs);
+			}
+		}
+		getTabs(listOfTabs);
+  }
 	
 	function getTabs(tabs) {
 		let allInfo = JSON.stringify(tabs);
 		chrome.runtime.sendMessage({
-			action : 'info',
-			data :allInfo
-		})
-		chrome.windows.getAll({"populate": true}, moveTabs);
+			action: 'info',
+			data: allInfo
+		});
 	}
 }
