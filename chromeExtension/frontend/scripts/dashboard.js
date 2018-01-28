@@ -33,10 +33,10 @@ window.onload = function () {
       currentTabs.append(newTab)
     }
   }
-  
-  function setUserData(userData) {
-    //set Email
-    //set Photo
+
+  function setUserData (userData) {
+    // set Email
+    // set Photo
   }
 
   let followersButton = document.getElementById('followers'),

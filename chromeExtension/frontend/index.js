@@ -13,7 +13,7 @@ $(document).ready(function () {
       action: 'open dashboard'
     })
   })
-  
+
   $('#login').click(function () {
 	  chrome.runtime.sendMessage({
 		  action: 'allow login'

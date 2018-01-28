@@ -3272,12 +3272,12 @@ function (i, name) {
               jQuery.each(args, function (_, arg) {
                 if (jQuery.isFunction(arg)) {
                   if (!options.unique || !self.has(arg)) {
-                  list.push(arg)
-                }
+                    list.push(arg)
+                  }
                 } else if (arg && arg.length && jQuery.type(arg) !== 'string') {
 								// Inspect recursively
-                add(arg)
-              }
+                  add(arg)
+                }
               })
             })(arguments)
 
@@ -3481,16 +3481,16 @@ function (i, name) {
 									// https://promisesaplus.com/#point-59
 									// Ignore double-resolution attempts
                     if (depth < maxDepth) {
-                    return
-                  }
+                      return
+                    }
 
                     returned = handler.apply(that, args)
 
 									// Support: Promises/A+ section 2.3.1
 									// https://promisesaplus.com/#point-48
                     if (returned === deferred.promise()) {
-                    throw new TypeError('Thenable self-resolution')
-                  }
+                      throw new TypeError('Thenable self-resolution')
+                    }
 
 									// Support: Promises/A+ sections 2.3.3.1, 3.5
 									// https://promisesaplus.com/#point-54
@@ -3508,40 +3508,40 @@ function (i, name) {
 									// Handle a returned thenable
                     if (jQuery.isFunction(then)) {
 										// Special processors (notify) just wait for resolution
-                    if (special) {
-                    then.call(
+                      if (special) {
+                        then.call(
 												returned,
 												resolve(maxDepth, deferred, Identity, special),
 												resolve(maxDepth, deferred, Thrower, special)
 											)
 
 										// Normal processors (resolve) also hook into progress
-                  } else {
+                      } else {
 											// ...and disregard older resolution values
-                    maxDepth++
+                        maxDepth++
 
-                    then.call(
+                        then.call(
 												returned,
 												resolve(maxDepth, deferred, Identity, special),
 												resolve(maxDepth, deferred, Thrower, special),
 												resolve(maxDepth, deferred, Identity,
 													deferred.notifyWith)
 											)
-                  }
+                      }
 
 									// Handle all other returned values
-                  } else {
+                    } else {
 										// Only substitute handlers pass on context
 										// and multiple values (non-spec behavior)
-                    if (handler !== Identity) {
-                    that = undefined
-                    args = [ returned ]
-                  }
+                      if (handler !== Identity) {
+                        that = undefined
+                        args = [ returned ]
+                      }
 
 										// Process the value(s)
 										// Default process is resolve
-                    (special || deferred.resolveWith)(that, args)
-                  }
+                      (special || deferred.resolveWith)(that, args)
+                    }
                   },
 
 								// Only normal processors (resolve) catch and reject exceptions
@@ -8410,13 +8410,13 @@ function (i, name) {
                 if (conv) {
 								// Condense equivalence converters
                   if (conv === true) {
-                conv = converters[ conv2 ]
+                    conv = converters[ conv2 ]
 
 								// Otherwise, insert the intermediate dataType
-              } else if (converters[ conv2 ] !== true) {
-              current = tmp[ 0 ]
-              dataTypes.unshift(tmp[ 1 ])
-            }
+                  } else if (converters[ conv2 ] !== true) {
+                    current = tmp[ 0 ]
+                    dataTypes.unshift(tmp[ 1 ])
+                  }
                   break
                 }
               }
@@ -9161,18 +9161,18 @@ function (i, name) {
 								// Support: IE <=9 only
 								// On a manual native abort, IE9 throws
 								// errors on any property access that is not readyState
-                if (typeof xhr.status !== 'number') {
-                complete(0, 'error')
-              } else {
-                complete(
+                  if (typeof xhr.status !== 'number') {
+                    complete(0, 'error')
+                  } else {
+                    complete(
 
 										// File: protocol always yields status 0; see #8605, #14207
 										xhr.status,
 										xhr.statusText
 									)
-              }
-              } else {
-                complete(
+                  }
+                } else {
+                  complete(
 									xhrSuccessStatus[ xhr.status ] || xhr.status,
 									xhr.statusText,
 
@@ -9185,7 +9185,7 @@ function (i, name) {
 										: { text: xhr.responseText },
 									xhr.getAllResponseHeaders()
 								)
-              }
+                }
               }
             }
           }
@@ -9209,8 +9209,8 @@ function (i, name) {
 							// as xhr.onerror cannot be accessed
                 window.setTimeout(function () {
                   if (callback) {
-                  errorCallback()
-                }
+                    errorCallback()
+                  }
                 })
               }
             }
