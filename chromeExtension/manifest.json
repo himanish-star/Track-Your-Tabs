@@ -15,7 +15,7 @@
   ],
   "background": {
     "scripts": [
-      "backend/eventHandler.js",
+      "backend/routes.js",
       "backend/tabs.js"
     ],
     "persistent": false

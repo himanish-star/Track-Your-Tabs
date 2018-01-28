@@ -1,3 +1,6 @@
+chrome.tabs.onActivated.addListener(sendData);
+chrome.tabs.onRemoved.addListener(sendData);
+
 chrome.runtime.onMessage.addListener(function (message) {
 	let messageAction = message.action;
 
@@ -7,9 +10,6 @@ chrome.runtime.onMessage.addListener(function (message) {
 			break;
 	}
 });
-
-chrome.tabs.onActivated.addListener(sendData);
-chrome.tabs.onRemoved.addListener(sendData);
 
 function sendData() {
 	chrome.windows.getAll({"populate": true}, getWindows);

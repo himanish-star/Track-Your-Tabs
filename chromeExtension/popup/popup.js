@@ -1,6 +1,5 @@
 
 $(function () {
-
   let openHome = $('#openHome')
 
   openHome.click(function () {

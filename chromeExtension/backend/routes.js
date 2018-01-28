@@ -17,5 +17,7 @@ chrome.runtime.onMessage.addListener(function (message) {
         chrome.tabs.update(tabs[0].id, {url: "./frontend/templates/profile.html"});
       });
       break;
+    case 'open history':
+      break;
   }
 });
