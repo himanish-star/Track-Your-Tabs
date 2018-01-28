@@ -1,177 +1,596 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-<title>{{username}}</title>
+<head>
+  <title>dashboard</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../external%20assets/routes/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../external%20assets/routes/font-awesome/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" href="../external%20assets/routes/css/magnific-popup.css">
 
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="../styles/dashboard.css">
+  <link rel="stylesheet" type="text/css" href="../external%20assets/routes/css/main.css">
+</head>
 
-<body class="w3-theme-l5">
-
-<!-- Navbar -->
-<div class="w3-top">
-  <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
-    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Track Your Tabs</a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Account Settings"><i class="fa fa-user"></i></a>
-    <div class="w3-dropdown-hover w3-hide-small">
-      <button class="w3-button w3-padding-large" title="Notifications"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-green">0</span></button>
-      <div id="notificationDropdown" class="w3-dropdown-content w3-card-4 w3-bar-block">
+<body>
+<!-- Wrapper -->
+<section class="head" id="header">
+  <div class="wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <header class="header">
+            <div class="inner">
+              <!-- Logo -->
+              <a href="#menu"class="nav-bars">
+                <img src="../external%20assets/routes/images/nav_icon.svg" class="img-responsive" alt="Collapsable Navbar">
+              </a>
+              <a href="index.html" class="logo">
+                <span class="symbol"><img src="../external%20assets/routes/images/logo.png" alt="Title" /></span><span class="title">volca&#769;n</span>
+              </a>
+            </div>
+          </header>
+          <!-- Menu -->
+          <nav id="menu">
+            <h2>Menu</h2>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="elements.html">Elements</a></li>
+            </ul>
+          </nav>
+        </div>
       </div>
     </div>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account">
-      <img id="avatarProfile" src="../images/avatar.png" class="w3-circle" alt="Avatar">
-    </a>
   </div>
-</div>
+</section>
 
-<!-- Navbar on small screens -->
-<div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
-  <a href="#" class="w3-bar-item w3-button w3-padding-large">My Profile</a>
-</div>
+<!-- Main -->
 
-<!-- Page Container -->
-<div id="pageContainer" class="w3-container w3-content">
-  <!-- The Grid -->
-  <div class="w3-row">
-    <!-- Left Column -->
-    <div class="w3-col m3">
-      <!-- Profile -->
-      <div class="w3-card w3-round w3-white">
-        <div class="w3-container">
-          <!--replace my profile with user name-->
-          <h4 class="w3-center">{{username}}</h4>
-          <p class="w3-center"><img id="avatarMain" src="../images/avatar.png" class="w3-circle" alt="Avatar"></p>
-          <hr>
-          <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>{{skills}}</p>
-          <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i>{{location}}</p>
-          <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i>{{birth date}}</p>
-        </div>
+<section class="main-body">
+  <button id="fetchBtn">fetch</button>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <p class="drescription">Highly motivated front-end developer with <span class="orange">international client portfolio.</span> Driven and permanently curious, I am now specialized in fixing front-end issues that other technology providers can't manage.</p>
       </div>
-      <br>
-
-      <!-- Menu -->
-      <div class="w3-card w3-round">
-        <div class="w3-white">
-          <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-history fa-fw w3-margin-right"></i> History</button>
-          <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-check-square-o fa-fw w3-margin-right"></i> Manage Site Tracking</button>
-          <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-rss fa-fw w3-margin-right"></i> Analyse Net Speed</button>
-          <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-area-chart fa-fw w3-margin-right"></i> Analyse Data Usage</button>
-          <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-book fa-fw w3-margin-right"></i> View Track Records</button>
-        </div>
-      </div>
-      <br>
-
-      <!-- Followers and Following -->
-      <div id="followers-following" class="w3-card w3-round w3-white w3-hide-small">
-        <div class="w3-container">
-          <button class="w3-button" id="followers">Followers&nbsp;<span class="w3-badge w3-right w3-small w3-green">0</span></button>
-          <button class="w3-button" id="following">Following&nbsp;<span class="w3-badge w3-right w3-small w3-green">0</span></button>
-          <br>
-          <div id="followersList">no followers</div>
-          <div id="followingList">following no one</div>
-        </div>
-      </div>
-      <br>
-
-      <!-- Alert Box -->
-      <div class="w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
-        <span onclick="this.parentElement.style.display='none'" class="w3-button w3-theme-l3 w3-display-topright">
-          <i class="fa fa-remove"></i>
-        </span>
-        <p><strong>Hey!</strong></p>
-        <p>People are looking at your profile. Find out who.</p>
-      </div>
-
-      <!-- End Left Column -->
     </div>
-
-    <!-- Middle Column -->
-    <div class="w3-col m7" id="tabsList">
-
-      <div class="w3-row-padding">
-        <div class="w3-col m12">
-          <div class="w3-card w3-round w3-white">
-            <div class="w3-container w3-padding">
-              <h6 class="w3-opacity">Welcome to your dashboard</h6>
-              <input type="text" id="searchDashboard" class="w3-border w3-padding" placeholder="Search among the current tabs on this window"><br><br>
-              <button type="button" class="w3-button w3-theme"><i class="fa fa-search"></i>  Search</button><br>
+    <div class="tiles">
+      <div id="currentTabs" class="row">
+        <div class="col-md-6">
+          <div class="a">
+            <a href="#test-popup-1" class="open-popup-link">
+              <img src="../external%20assets/routes/images/1.jpg" class="img-responsive" alt="Responsive image">
+              <div class="img-hover glass">
+                <div class="c-table">
+                  <div class="ct-cell">
+                    <h3 class="img-title">Glass</h3>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div id="test-popup-1" class="white-popup mfp-hide">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="pop-up-color">
+                  <div class="col-md-8 p-l-0 p-r-0">
+                    <img src="../external%20assets/routes/images/1.jpg" class="img-responsive" alt="Responsive image">
+                  </div>
+                  <div class="col-md-4">
+                    <div>
+                      <h2 class="popup-head">Glass</h2>
+                    </div>
+                    <div>
+                      <p class="popup-parapraph">Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod sit a amet nisi is a euismod sed cursus arcu elementum and ipsum arcu vivamus is quis venenatis orci and nullam dolore. Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod still amet nisi aliqua.Eas Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    <div class="pop-up-icon">
+                      <div class="row">
+                        <ul class="text-center popup-social-contact">
+                          <li class="popup-social-icons">
+                            <a href="#" class="icon pop-up fa-facebook"><span class="label">Facebook</span></a>
+                          </li>
+                          <li class="popup-social-icons">
+                            <a href="#" class="icon pop-up fa-twitter"><span class="label">Twitter</span></a>
+                          </li>
+                          <li class="popup-social-icons">
+                            <a href="#" class="icon pop-up fa-google-plus"><span class="label">GooglePlus</span></a>
+                          </li>
+                          <li class="popup-social-icons">
+                            <a href="#" class="icon pop-up fa-pinterest"><span class="label">pinterest</span></a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="a">
+            <a href="#test-popup-2" class="open-popup-link">
+              <img src="../external%20assets/routes/images/2.jpg" class="img-responsive" alt="Responsive image">
+              <div class="img-hover shoes-glass">
+                <div class="c-table">
+                  <div class="ct-cell">
+                    <h3 class="img-title">SHOES & GLASS</h3>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div id="test-popup-2" class="white-popup mfp-hide">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="pop-up-color">
+                  <div class="col-md-8 p-l-0 p-r-0">
+                    <img src="../external%20assets/routes/images/2.jpg" class="img-responsive" alt="Responsive image">
+                  </div>
+                  <div class="col-md-4">
+                    <div>
+                      <h2 class="popup-head">SHOES & GLASS</h2>
+                    </div>
+                    <div>
+                      <p class="popup-parapraph">Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod sit a amet nisi is a euismod sed cursus arcu elementum and ipsum arcu vivamus is quis venenatis orci and nullam dolore. Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod still amet nisi aliqua.Eas Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    <div class="pop-up-icon">
+                      <div class="row">
+                        <ul class="text-center popup-social-contact">
+                          <li class="popup-social-icons">
+                            <a href="#" class="icon pop-up fa-facebook"><span class="label">Facebook</span></a>
+                          </li>
+                          <li class="popup-social-icons">
+                            <a href="#" class="icon pop-up fa-twitter"><span class="label">Twitter</span></a>
+                          </li>
+                          <li class="popup-social-icons">
+                            <a href="#" class="icon pop-up fa-google-plus"><span class="label">GooglePlus</span></a>
+                          </li>
+                          <li class="popup-social-icons">
+                            <a href="#" class="icon pop-up fa-pinterest"><span class="label">pinterest</span></a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><br>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="a">
+            <a href="#test-popup-3" class="open-popup-link">
+              <img src="../external%20assets/routes/images/3.jpg" class="img-responsive" alt="Responsive image">
+              <div class="img-hover hand-parts">
+                <div class="c-table">
+                  <div class="ct-cell">
+                    <h3 class="img-title">HAND PARTS</h3>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div id="test-popup-3" class="white-popup mfp-hide">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="pop-up-color">
+                  <div class="col-md-8 p-l-0 p-r-0">
+                    <img src="../external%20assets/routes/images/3.jpg" class="img-responsive" alt="Responsive image">
+                  </div>
+                  <div class="col-md-4">
+                    <div>
+                      <h2 class="popup-head">HAND PARTS</h2>
+                    </div>
+                    <div>
+                      <p class="popup-parapraph">Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod sit a amet nisi is a euismod sed cursus arcu elementum and ipsum arcu vivamus is quis venenatis orci and nullam dolore. Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod still amet nisi aliqua.Eas Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    <div class="pop-up-icon">
+                      <div class="row">
+                        <ul class="text-center popup-social-contact">
+                          <li class="popup-social-icons">
+                            <a href="#" class="icon pop-up fa-facebook"><span class="label">Facebook</span></a>
+                          </li>
+                          <li class="popup-social-icons">
+                            <a href="#" class="icon pop-up fa-twitter"><span class="label">Twitter</span></a>
+                          </li>
+                          <li class="popup-social-icons">
+                            <a href="#" class="icon pop-up fa-google-plus"><span class="label">GooglePlus</span></a>
+                          </li>
+                          <li class="popup-social-icons">
+                            <a href="#" class="icon pop-up fa-pinterest"><span class="label">pinterest</span></a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="a">
+            <a href="#test-popup-4" class="open-popup-link">
+              <img src="../external%20assets/routes/images/4.jpg" class="img-responsive" alt="Responsive image">
+              <div class="img-hover table-with-phone">
+                <div class="c-table">
+                  <div class="ct-cell">
+                    <h3 class="img-title">TAB &amp; PHONE</h3>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div id="test-popup-4" class="white-popup mfp-hide">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="pop-up-color">
+                  <div class="col-md-8 p-l-0 p-r-0">
+                    <img src="../external%20assets/routes/images/4.jpg" class="img-responsive" alt="Responsive image">
+                  </div>
+                  <div class="col-md-4">
+                    <div>
+                      <h2 class="popup-head">Tablet with phone</h2>
+                    </div>
+                    <div>
+                      <p class="popup-parapraph">Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod sit a amet nisi is a euismod sed cursus arcu elementum and ipsum arcu vivamus is quis venenatis orci and nullam dolore. Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod still amet nisi aliqua.Eas Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    <div class="pop-up-icon">
+                      <div class="row">
+                        <ul class="text-center popup-social-contact">
+                          <li class="popup-social-icons">
+                            <a href="#" class="icon pop-up fa-facebook"><span class="label">Facebook</span></a>
+                          </li>
+                          <li class="popup-social-icons">
+                            <a href="#" class="icon pop-up fa-twitter"><span class="label">Twitter</span></a>
+                          </li>
+                          <li class="popup-social-icons">
+                            <a href="#" class="icon pop-up fa-google-plus"><span class="label">GooglePlus</span></a>
+                          </li>
+                          <li class="popup-social-icons">
+                            <a href="#" class="icon pop-up fa-pinterest"><span class="label">pinterest</span></a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="a">
+            <a href="#test-popup-5" class="open-popup-link">
+              <img src="../external%20assets/routes/images/5.jpg" class="img-responsive" alt="Responsive image">
+              <div class="img-hover orange-shoe">
+                <div class="c-table">
+                  <div class="ct-cell">
+                    <h3 class="img-title">ORANGE SHOE</h3>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div id="test-popup-5" class="white-popup mfp-hide">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="pop-up-color">
+                  <div class="col-md-8 p-l-0 p-r-0">
+                    <img src="../external%20assets/routes/images/5.jpg" class="img-responsive" alt="Responsive image">
+                  </div>
+                  <div class="col-md-4">
+                    <div>
+                      <h2 class="popup-head">Orange shoe</h2>
+                    </div>
+                    <div>
+                      <p class="popup-parapraph">Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod sit a amet nisi is a euismod sed cursus arcu elementum and ipsum arcu vivamus is quis venenatis orci and nullam dolore. Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod still amet nisi aliqua.Eas Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    <div class="pop-up-icon">
+                      <div class="row">
+                        <ul class="text-center popup-social-contact">
+                          <li class="popup-social-icons">
+                            <a href="#" class="icon pop-up fa-facebook"><span class="label">Facebook</span></a>
+                          </li>
+                          <li class="popup-social-icons">
+                            <a href="#" class="icon pop-up fa-twitter"><span class="label">Twitter</span></a>
+                          </li>
+                          <li class="popup-social-icons">
+                            <a href="#" class="icon pop-up fa-google-plus"><span class="label">GooglePlus</span></a>
+                          </li>
+                          <li class="popup-social-icons">
+                            <a href="#" class="icon pop-up fa-pinterest"><span class="label">pinterest</span></a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><br>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="a">
+            <a href="#test-popup-6" class="open-popup-link">
+              <img src="../external%20assets/routes/images/6.jpg" class="img-responsive" alt="Responsive image">
+              <div class="img-hover glass-shoes">
+                <div class="c-table">
+                  <div class="ct-cell">
+                    <h3 class="img-title">GLASS & SHOES</h3>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div id="test-popup-6" class="white-popup mfp-hide">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="pop-up-color">
+                  <div class="col-md-8 p-l-0 p-r-0">
+                    <img src="../external%20assets/routes/images/6.jpg" class="img-responsive" alt="Responsive image">
+                  </div>
+                  <div class="col-md-4">
+                    <div>
+                      <h2 class="popup-head">Glass & Shoes</h2>
+                    </div>
+                    <div>
+                      <p class="popup-parapraph">Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod sit a amet nisi is a euismod sed cursus arcu elementum and ipsum arcu vivamus is quis venenatis orci and nullam dolore. Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod still amet nisi aliqua.Eas Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    <div class="pop-up-icon">
+                      <div class="row">
+                        <ul class="text-center popup-social-contact">
+                          <li class="popup-social-icons">
+                            <a href="#" class="icon pop-up fa-facebook"><span class="label">Facebook</span></a>
+                          </li>
+                          <li class="popup-social-icons">
+                            <a href="#" class="icon pop-up fa-twitter"><span class="label">Twitter</span></a>
+                          </li>
+                          <li class="popup-social-icons">
+                            <a href="#" class="icon pop-up fa-google-plus"><span class="label">GooglePlus</span></a>
+                          </li>
+                          <li class="popup-social-icons">
+                            <a href="#" class="icon pop-up fa-pinterest"><span class="label">pinterest</span></a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="a">
+            <a href="#test-popup-7" class="open-popup-link">
+              <img src="../external%20assets/routes/images/7.jpg" class="img-responsive" alt="Responsive image">
+              <div class="img-hover girls-tops">
+                <div class="c-table">
+                  <div class="ct-cell">
+                    <h3 class="img-title">GIRLS TOPS</h3>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div id="test-popup-7" class="white-popup mfp-hide">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="pop-up-color">
+                  <div class="col-md-8 p-l-0 p-r-0">
+                    <img src="../external%20assets/routes/images/7.jpg" class="img-responsive" alt="Responsive image">
+                  </div>
+                  <div class="col-md-4">
+                    <div>
+                      <h2 class="popup-head">Girls Tops</h2>
+                    </div>
+                    <div>
+                      <p class="popup-parapraph">Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod sit a amet nisi is a euismod sed cursus arcu elementum and ipsum arcu vivamus is quis venenatis orci and nullam dolore. Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod still amet nisi aliqua.Eas Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    <div class="pop-up-icon">
+                      <div class="row">
+                        <ul class="text-center popup-social-contact">
+                          <li class="popup-social-icons">
+                            <a href="#" class="icon pop-up fa-facebook"><span class="label">Facebook</span></a>
+                          </li>
+                          <li class="popup-social-icons">
+                            <a href="#" class="icon pop-up fa-twitter"><span class="label">Twitter</span></a>
+                          </li>
+                          <li class="popup-social-icons">
+                            <a href="#" class="icon pop-up fa-google-plus"><span class="label">GooglePlus</span></a>
+                          </li>
+                          <li class="popup-social-icons">
+                            <a href="#" class="icon pop-up fa-pinterest"><span class="label">pinterest</span></a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="a">
+            <a href="#test-popup-8" class="open-popup-link">
+              <img src="../external%20assets/routes/images/8.jpg" class="img-responsive" alt="Responsive image">
+              <div class="img-hover egg-arts">
+                <div class="c-table">
+                  <div class="ct-cell">
+                    <h3 class="img-title">EGG ARTS</h3>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div id="test-popup-8" class="white-popup mfp-hide">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="pop-up-color">
+                  <div class="col-md-8 p-l-0 p-r-0">
+                    <img src="../external%20assets/routes/images/8.jpg" class="img-responsive" alt="Responsive image">
+                  </div>
+                  <div class="col-md-4">
+                    <div>
+                      <h2 class="popup-head">Egg Arts</h2>
+                    </div>
+                    <div>
+                      <p class="popup-parapraph">Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod sit a amet nisi is a euismod sed cursus arcu elementum and ipsum arcu vivamus is quis venenatis orci and nullam dolore. Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod still amet nisi aliqua.Eas Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    <div class="pop-up-icon">
+                      <div class="row">
+                        <ul class="text-center popup-social-contact">
+                          <li class="popup-social-icons">
+                            <a href="#" class="icon pop-up fa-facebook"><span class="label">Facebook</span></a>
+                          </li>
+                          <li class="popup-social-icons">
+                            <a href="#" class="icon pop-up fa-twitter"><span class="label">Twitter</span></a>
+                          </li>
+                          <li class="popup-social-icons">
+                            <a href="#" class="icon pop-up fa-google-plus"><span class="label">GooglePlus</span></a>
+                          </li>
+                          <li class="popup-social-icons">
+                            <a href="#" class="icon pop-up fa-pinterest"><span class="label">pinterest</span></a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div id="currentTabs">
-      </div>
-      <!-- End Middle Column -->
     </div>
+  </div>
+</section>
 
-    <!-- Right Column -->
-    <div class="w3-col m2">
-      <div class="w3-card w3-round w3-white w3-center">
-        <div class="w3-container">
-          <p>Upcoming Events:</p>
-          <img src="/w3images/forest.jpg" alt="Forest" style="width:100%;">
-          <p><strong>Holiday</strong></p>
-          <p>Friday 15:00</p>
-          <p><button class="w3-button w3-block w3-theme-l4">Info</button></p>
-        </div>
-      </div>
-      <br>
-
-      <div class="w3-card w3-round w3-white w3-center">
-        <div class="w3-container">
-          <p>Friend Request</p>
-          <img src="/w3images/avatar6.png" alt="Avatar" style="width:50%"><br>
-          <span>Jane Doe</span>
-          <div class="w3-row w3-opacity">
-            <div class="w3-half">
-              <button class="w3-button w3-block w3-green w3-section" title="Accept"><i class="fa fa-check"></i></button>
+<section class="contact">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <h1>GET IN TOUCH</h1>
+        <form>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control gt" name="name" id="name" placeholder="Name"/>
+              </div>
             </div>
-            <div class="w3-half">
-              <button class="w3-button w3-block w3-red w3-section" title="Decline"><i class="fa fa-remove"></i></button>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="email" class="form-control gt" name="email" id="email" placeholder="Email" />
+              </div>
             </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="from-group">
+                <textarea class="form-control gt" rows="2" name="message" id="message" placeholder="Message..."></textarea>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="form-group"  align="right">
+          <div class="col-sm-offset-2 col-sm-10">
+            <a href="#" type="submit" class="btn btn-tobais btn-send-2">SEND</a>
           </div>
         </div>
       </div>
-      <br>
-
-      <div class="w3-card w3-round w3-white w3-padding-16 w3-center">
-        <p>ADS</p>
+      <div class="col-md-4">
+        <h1>CONTACT INFO</h1>
+        <p class="contact-desc">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus voluptatum necessi tatibus.
+        </p>
+        <p><Strong>Address: </Strong> 36th Street, Block A, Mischigan, USA</p>
+        <p><Strong>Call:</Strong> 444 123 025 12</p>
+        <p><Strong>Fax: </Strong>444 123 025 12</p>
+        <p><Strong>Email: </Strong>color@gmail.com</p>
       </div>
-      <br>
-
-      <div class="w3-card w3-round w3-white w3-padding-32 w3-center">
-        <p><i class="fa fa-bug w3-xxlarge"></i></p>
-      </div>
-
-      <!-- End Right Column -->
     </div>
-
-    <!-- End Grid -->
   </div>
+</section>
 
-  <!-- End Page Container -->
-</div>
-<br>
+<section class="social-contact-icon">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-xs-12">
+        <ul class="text-center social-contact">
+          <li class="social-icons">
+            <a href="#" class="icon style2 fa-facebook"><span class="label">Facebook</span></a>
+          </li>
+          <li class="social-icons">
+            <a href="#" class="icon style2 fa-twitter"><span class="label">Twitter</span></a>
+          </li>
+          <li class="social-icons">
+            <a href="#" class="icon style2 fa-google-plus"><span class="label">GooglePlus</span></a>
+          </li>
+          <li class="social-icons">
+            <a href="#" class="icon style2 fa-pinterest"><span class="label">pinterest</span></a>
+          </li>
+          <li class="social-icons">
+            <a href="#" class="icon style2 fa-stumbleupon"><span class="label">Stumbleupon</span></a>
+          </li>
+          <li class="social-icons">
+            <a href="#" class="icon style2 fa-tumblr"><span class="label">tumblr</span></a>
+          </li>
+          <li class="social-icons">
+            <a href="#" class="icon style2 fa-instagram"><span class="label">Instagram</span></a>
+          </li>
+          <li class="social-icons">
+            <a href="#" class="icon style2 fa-reddit-alien"><span class="label">reddit-alien</span></a>
+          </li>
+          <li class="social-icons">
+            <a href="#" class="icon style2 fa-dribbble"><span class="label">Dribbble</span></a>
+          </li>
+          <li class="social-icons">
+            <a href="#" class="icon style2 fa-behance"><span class="label">Behance</span></a>
+          </li>
+          <li class="social-icons">
+            <a href="#" class="icon style2 fa-linkedin"><span class="label">Linkedin</span></a>
+          </li>
+          <li class="social-icons">
+            <a href="#" class="icon style2 fa-vk"><span class="label">vk</span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-<!-- Footer -->
-<footer class="w3-container w3-theme-d3 w3-padding-16">
-  <h5>Footer</h5>
-</footer>
+<section class="footer">
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-xs-9">
+          <p class="right-color">&copy; Copyright 2016. All rights reserved by <a href="https://themewagon.com/" target="_blank">ThemeWagon</a></p>
+        </div>
+        <div class="col-sm-4 col-xs-3" align="right">
+          <a href="#" id="back-to-top" class="top text-right" >TOP <i class="fa fa-angle-up" aria-hidden="true"></i> </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</section>
 
-<footer class="w3-container w3-theme-d5">
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-</footer>
+<!-- Scripts -->
 
-<script src="../scripts/jquery-3.2.1.js"></script>
-<script src="../scripts/custom.js"></script>
+<script src="../external%20assets/routes/js/jquery-3.1.0.min.js"></script>
+<script src="../external%20assets/routes/js/bootstrap.min.js"></script>
+<script src="../external%20assets/routes/js/jquery.magnific-popup.min.js"></script>
+<script src="../external%20assets/routes/js/script.js"></script>
 <script src="../scripts/dashboard.js"></script>
-<script src="../index.js"></script>
-
+<!--  ===== Scroll to Top ====  -->
 </body>
 </html>

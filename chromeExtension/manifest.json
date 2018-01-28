@@ -11,12 +11,14 @@
     "48": "./popup/logoIcons/TYTLogo48.png",
     "128": "./popup/logoIcons/TYTLogo128.png" },
   "permissions": [
-    "tabs"
+    "tabs",
+    "<all_urls>"
   ],
   "background": {
     "scripts": [
       "backend/routes.js",
-      "backend/tabs.js"
+      "backend/tabs.js",
+      "backend/history.js"
     ],
     "persistent": false
   }
