@@ -17,13 +17,17 @@ window.onload = function () {
     });
   });
 
+
   chrome.runtime.onMessage.addListener(function (message) {
-    let messageAction = message.action;
+    let messageAction = message.action
 
     switch (messageAction) {
       case 'tabs fetched':
-        displayInfo(message.tabs);
-        break;
+        displayInfo(message.tabs)
+        break
+      case 'user data':
+        setUserData(message.data)
+        break
     }
   });
 
@@ -86,8 +90,14 @@ window.onload = function () {
             </div>
           </div>
         </div>
-      `);
-      currentTabs.append(newTab);
+      `)
+      currentTabs.append(newTab)
     }
   }
 };
+
+function setUserData (userData) {
+  // set Email
+  // set Photo
+}
+

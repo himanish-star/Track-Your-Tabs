@@ -4,17 +4,17 @@ chrome.tabs.onRemoved.addListener(sendData);
 */
 
 chrome.runtime.onMessage.addListener(function (message) {
-	let messageAction = message.action;
+  let messageAction = message.action
 
-	switch (messageAction) {
-		case 'fetch tabs':
-			sendData();
-			break;
-	}
-});
+  switch (messageAction) {
+    case 'fetch tabs':
+      sendData()
+      break
+  }
+})
 
-function sendData() {
-	chrome.windows.getAll({"populate": true}, getWindows);
+function sendData () {
+  chrome.windows.getAll({'populate': true}, getWindows)
 
   function getWindows(windows) {
 		let listOfTabs = [];

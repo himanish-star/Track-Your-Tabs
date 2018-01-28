@@ -1,25 +1,44 @@
 {
   "name": "Track-Your-Tabs",
+
   "version": "1.0",
+
   "manifest_version": 2,
+
   "browser_action": {
     "default_icon": "./popup/logoIcons/TYTLogo128.png",
     "default_popup": "./popup/popup.html"
   },
+
   "icons": {
     "16": "./popup/logoIcons/TYTLogo16.png",
     "48": "./popup/logoIcons/TYTLogo48.png",
     "128": "./popup/logoIcons/TYTLogo128.png" },
+
   "permissions": [
     "tabs",
-    "<all_urls>"
+    "<all_urls>",
+    "identity",
+    "https://accounts.google.com/*",
+    "https://www.googleapis.com/*"
   ],
+
   "background": {
     "scripts": [
       "backend/routes.js",
       "backend/tabs.js",
-      "backend/history.js"
+      "backend/history.js",
+      "backend/login.js"
     ],
     "persistent": false
-  }
+  },
+
+  "oauth2": {
+    "client_id": "939102030430-92ip7jaep1oe9nfnr8279tu84os4kgk4.apps.googleusercontent.com",
+    "scopes" : [
+      "https://googleapis.com/auth/plus.login","profile","email"
+    ]
+  },
+
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4XVQBBeIu1nFxsVWnx/lcIRucfMui9fLtcKt5ZewAiEdVJUS8HzFDfM6NSCpnRKEd5rCvcnxv7QF/f+JxNrv9iJiM5eFe4kbnQVl7SHr2VS9suQ/E4NdlkDxczvYV2sDBHfnYx3SrYgMPxoc4+SmCAIi55nZJHoRDd2qVBC6NwswIZWvjKkBe66/PeP1DaXZUsqemPCYUwzL2/FARDJFQBvLFqdQ9LPT+N+UwCwp1CaCphbDSptECi8hPT27s/xJPGYsQ4YLoMEVEhkKagSDAsw0he4OSwMH7ycpLQEkknMe3u8VGipYANTwXSevwJ6J3SzonnEvGbxSnHQjYBml0QIDAQAB"
 }
