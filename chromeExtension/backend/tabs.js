@@ -1,57 +1,64 @@
-/*
-chrome.tabs.onActivated.addListener(sendData);
-chrome.tabs.onRemoved.addListener(sendData);
-*/
-
 chrome.runtime.onMessage.addListener(function (message) {
-  let messageAction = message.action
+  let messageAction = message.action;
 
   switch (messageAction) {
-    case 'fetch tabs':
-      sendData()
+    case 'fetch tabs normally':
+      fetchTabs(false);
+      break;
+    case 'fetch tabs with screenshot':
+      fetchTabs(true);
       break
   }
-})
+});
 
-function sendData () {
-  chrome.windows.getAll({'populate': true}, getWindows)
-
-  function getWindows(windows) {
-		let listOfTabs = [];
-  	function kolp(i) {
-  		if(i === windows[0].tabs.length){
-  			chrome.runtime.sendMessage({
-					action: 'tabs fetched',
-					tabs: listOfTabs
-				});
-  			return
-			}
-			chrome.tabs.update(windows[0].tabs[i].id, {active:true}, function () {
-				setTimeout(function () {
-					chrome.tabs.captureVisibleTab(windows[0].id, function (screenShotURL) {
-						let tabData = {
-							tab: windows[0].tabs[i],
-							url: screenShotURL
-						};
-						listOfTabs.push(tabData);
-						setTimeout(function () {
-							kolp(i+1);
-            }, 200)
-          })
-        }, 100)
+function getWindowsWithScreenshot(windows) {
+  let listOfTabs = [];
+  function captureTabs(tabCount, windowCount) {
+    if(windowCount === windows.length) {
+      chrome.runtime.sendMessage({
+        action: 'tabs fetched with screenshot',
+        tabs: listOfTabs
       });
+      return;
     }
-    kolp(0);
+    if(tabCount === windows[windowCount].tabs.length){
+      captureTabs(0, windowCount+1);
+    }
+    chrome.tabs.update(windows[windowCount].tabs[tabCount].id, {active:true}, function () {
+      setTimeout(function () {
+        chrome.tabs.captureVisibleTab(windows[windowCount].id, function (screenShotURL) {
+          let tabData = {
+            tab: windows[windowCount].tabs[tabCount],
+            url: screenShotURL
+          };
+          listOfTabs.push(tabData);
+          setTimeout(function () {
+            captureTabs(tabCount+1, windowCount);
+          }, 200)
+        })
+      }, 100)
+    });
+  }
+  captureTabs(0, 0);
+}
 
-    /*let listOfTabs = [];
-    for(let window of windows) {
-    	for(let tabs of window.tabs) {
-    		listOfTabs.push(tabs);
-			}
-		}
-		chrome.runtime.sendMessage({
-			action: 'tabs fetched',
-			tabs: listOfTabs
-		})*/
+function getWindowsNormally(windows) {
+  let listOfTabs = [];
+  for(let window of windows) {
+    for(let tabs of window.tabs) {
+      listOfTabs.push(tabs);
+    }
+  }
+  chrome.runtime.sendMessage({
+    action: 'tabs fetched normally',
+    tabs: listOfTabs
+  })
+}
+
+function fetchTabs(withScreenshot) {
+  if (withScreenshot) {
+    chrome.windows.getAll({'populate': true}, getWindowsWithScreenshot)
+  } else {
+    chrome.windows.getAll({'populate': true}, getWindowsNormally)
   }
 }
