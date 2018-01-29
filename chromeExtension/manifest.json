@@ -18,6 +18,7 @@
   "permissions": [
     "tabs",
     "<all_urls>",
+    "history",
     "identity",
     "https://accounts.google.com/*",
     "https://www.googleapis.com/*"
