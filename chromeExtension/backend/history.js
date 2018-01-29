@@ -4,13 +4,16 @@ chrome.runtime.onMessage.addListener(function (message) {
   switch (messageAction) {
     case "fetch history of tabs opened in the past":
       fetchHistory();
-      break
+      break;
     case "fetch records of visit to a particular url":
-      fetchHistoryURL(message.url)
-      break
+      fetchHistoryURL(message.url);
+      break;
   }
 
 });
+
+chrome.history.onVisited.addListener(fetchHistory);
+chrome.history.onVisitRemoved.addListener(fetchHistory);
 
 function fetchHistoryURL(url) {
   chrome.history.getVisits({url:url}, function (visits) {

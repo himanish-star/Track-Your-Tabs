@@ -1,15 +1,6 @@
 window.onload = function () {
-  let historyList = $('#historyList')
-  /*let input = document.getElementById('url')
-  let fetchBTN = document.getElementById('fetch')
+  let historyList = $('#historyList');
 
-  fetchBTN.click(function () {
-    chrome.runtime.sendMessage({
-      action: "fetch records of visit to a particular url",
-      url: input.value
-    })
-  })
-*/
   chrome.runtime.sendMessage({
     action: "fetch history of tabs opened in the past"
   });
@@ -20,23 +11,24 @@ window.onload = function () {
     switch (messageAction) {
       case "history of tabs fetched":
         displayHistory(message.tabs);
-        break
+        break;
       case "visits to the url fetched":
         displayVisitsToURL(message.visits);
-        break
+        break;
     }
   });
 
   function displayVisitsToURL(visits) {
+    historyList.inner("");
     for(let visit of visits) {
       let li = document.createElement('li');
-      li.innerText = visit.visitTime
-      historyList.innerText = "";
+      li.innerText = visit.visitTime;
       historyList.appendChild(li)
     }
   }
 
   function displayHistory(tabs) {
+    historyList.html("");
     for(let i=0; i<tabs.length; i++) {
       let newRow = $(`
         <tr>
@@ -45,8 +37,8 @@ window.onload = function () {
           <td class="text-danger">${tabs[i].visitCount}</td>
           <td><a href="${tabs[i].url}">visit</a></td>
         </tr>    
-      `)
-      historyList.append(newRow)
+      `);
+      historyList.append(newRow);
     }
   }
 };
