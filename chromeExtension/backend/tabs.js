@@ -14,6 +14,16 @@ chrome.runtime.onMessage.addListener(function (message) {
 
 function getWindowsWithScreenshot(windows) {
   let listOfTabs = [];
+  let listOfCurrentTabs = [];
+
+  for(let window of windows) {
+    for(let tab of window.tabs) {
+      if(tab.active === true) {
+        listOfCurrentTabs.push(tab);
+      }
+    }
+  }
+
   function captureTabs(tabCount, windowCount) {
     if(windowCount === windows.length) {
       chrome.runtime.sendMessage({
@@ -23,6 +33,7 @@ function getWindowsWithScreenshot(windows) {
       return;
     }
     if(tabCount === windows[windowCount].tabs.length){
+      chrome.tabs.update(listOfCurrentTabs[windowCount].id, {active:true});
       captureTabs(0, windowCount+1);
     }
     chrome.tabs.update(windows[windowCount].tabs[tabCount].id, {active:true}, function () {

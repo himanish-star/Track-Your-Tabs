@@ -16,12 +16,10 @@
     "128": "./popup/logoIcons/TYTLogo128.png" },
 
   "permissions": [
-    "tabs",
+    "identity",
     "<all_urls>",
     "history",
-    "identity",
-    "https://accounts.google.com/*",
-    "https://www.googleapis.com/*"
+    "tabs"
   ],
 
   "background": {
@@ -29,17 +27,17 @@
       "backend/routes.js",
       "backend/tabs.js",
       "backend/history.js",
-      "backend/login.js"
+      "backend/identity.js"
     ],
     "persistent": false
   },
 
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAgzH4RBwYaW7UcFsNRMu8EcoKhEFmM3r0wA0+R/J2YbylwLISl3roz39m5JoojUsXDHmE7jcC0Z93NqN0XQlK91g4SLgvqj7iM411G1uEUrU1k7S1W1lmfHfgZfQogzWuJGGB9k+OVTsXpKh30jey593k4Myxq+nVgMIJ+rbSKMhjU+OwPP9OqGEmf35yNPP3GPPJp0TzqOquzu9wYjsDurSd65nVW7hu9UOcgAQ+J7Wd9hLPRbLPfkT4V8+bOYvg/R38JHimJc13QWjdtwfhMK808iE5bhTqG+Fsrzjir1RAVDgpVXFu8lsHMUnlUZIbKc80XWOGHYettyxNAPZ3jQIDAQAB"
+  ,
   "oauth2": {
-    "client_id": "939102030430-92ip7jaep1oe9nfnr8279tu84os4kgk4.apps.googleusercontent.com",
+    "client_id": "655798023590-ld21qfqq02akb7f68lqqorr7vl9gfkhb.apps.googleusercontent.com",
     "scopes" : [
-      "https://googleapis.com/auth/plus.login","profile","email"
+      "profile"
     ]
-  },
-
-  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4XVQBBeIu1nFxsVWnx/lcIRucfMui9fLtcKt5ZewAiEdVJUS8HzFDfM6NSCpnRKEd5rCvcnxv7QF/f+JxNrv9iJiM5eFe4kbnQVl7SHr2VS9suQ/E4NdlkDxczvYV2sDBHfnYx3SrYgMPxoc4+SmCAIi55nZJHoRDd2qVBC6NwswIZWvjKkBe66/PeP1DaXZUsqemPCYUwzL2/FARDJFQBvLFqdQ9LPT+N+UwCwp1CaCphbDSptECi8hPT27s/xJPGYsQ4YLoMEVEhkKagSDAsw0he4OSwMH7ycpLQEkknMe3u8VGipYANTwXSevwJ6J3SzonnEvGbxSnHQjYBml0QIDAQAB"
+  }
 }
