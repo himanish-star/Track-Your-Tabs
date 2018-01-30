@@ -17,7 +17,6 @@ window.onload = function () {
 	});
 	
 	function displayInfoWithScreenshot(tabsData) {
-	  console.log(tabsData)
 	  if($('#withCapture')) {
 	    $('#withCapture').html('');
 	    for (let i=0; i<tabsData.length; i++) {

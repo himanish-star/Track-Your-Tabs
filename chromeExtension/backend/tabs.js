@@ -25,7 +25,6 @@ function getWindowsWithScreenshot(windows) {
     if(tabCount === windows[windowCount].tabs.length){
       captureTabs(0, windowCount+1);
     }
-    console.log(windows);
     chrome.tabs.update(windows[windowCount].tabs[tabCount].id, {active:true}, function () {
       setTimeout(function () {
         chrome.tabs.captureVisibleTab(windows[windowCount].id, function (screenShotURL) {
