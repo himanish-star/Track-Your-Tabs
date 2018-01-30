@@ -1,7 +1,20 @@
 window.onload = function () {
 	let userPic = $('#userPic');
+	let fetch = $('#fetch');
+  let withCapture = $('#withCapture');
+  let withoutCapture = $('#withoutCapture');
+
+  fetchWithoutCapture();
+
+  fetch.click(function () {
+      fetchwithCapture()
+    }
+  );
 
 	userPic.click(setUserData);
+
+  chrome.tabs.onActivated.addListener(fetchWithoutCapture);
+  chrome.tabs.onRemoved.addListener(fetchWithoutCapture);
 
 	chrome.runtime.onMessage.addListener(function (message) {
 		let messageAction = message.action;
@@ -17,7 +30,6 @@ window.onload = function () {
 	});
 
 	function displayInfoWithScreenshot(tabsData) {
-		let withCapture = $('#withCapture');
 	  if(withCapture) {
       withCapture.html('');
 	    for (let i=0; i<tabsData.length; i++) {
@@ -52,49 +64,46 @@ window.onload = function () {
 	}
 	
 	function displayInfoNormally(tabsData) {
-		if ($('#withoutCapture')) {
-			
-			$('#withoutCapture').html('');
-			
+		if (withoutCapture) {
+			withoutCapture.html('');
 			for (let i = 0; i < tabsData.length; i++) {
-				
-				if (tabsData[i].title === 'dashboard' || tabsData[i].title === 'Extensions') {
+				if (tabsData[i].url.startsWith('chrome-extension://')) {
 					continue;
 				}
-				
-				let tab = $(` <div class="tab-pane active" id="home" role="tabpanel">
-                    <div class="card-block">
-                      <div class="profiletimeline">
-                        <div class="sl-item">
-                          <div class="sl-left"> <img src="${tabsData[i].favIconUrl}" alt="user" class="img-circle"> </div>
-                          <div class="sl-right">
-                            <div>
-                              <a href="${tabsData[i].url}" target="_blank" class="link">${tabsData[i].title}</a> <span class="sl-date"></span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <hr>
-                    </div>
-                  </div>
-               `)
-				$('#withoutCapture').append(tab);
+				let tab = $(` 
+ 					<div class="tab-pane active" id="home" role="tabpanel">
+           <div class="card-block">
+             <div class="profiletimeline">
+               <div class="sl-item">
+                 <div class="sl-left"><img src="${tabsData[i].favIconUrl}" alt="" class="img-circle"> 
+                 </div>
+                 <div class="sl-right">
+                   <div>
+                     <a href="${tabsData[i].url}" target="_blank" class="link">${tabsData[i].title}</a> <span class="sl-date"></span>
+                   </div>
+                 </div>
+               </div>
+             </div>
+             <hr>
+           </div>
+          </div>
+        `)
+				withoutCapture.append(tab);
 			}
 		}
 	}
 	
 	function setUserData() {
 		let userDetails = JSON.parse(localStorage.getItem('userDetails'));
-		userDetails = JSON.parse(userDetails);
 		userPic.html("");
 		let newRow = $(`
 			<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="${userDetails.picture}" alt="user" class="profile-pic m-r-10" />${userDetails.name}</a>	
-		`)
+		`);
 		userPic.append(newRow)
 	}
 	
 	function fetchWithoutCapture() {
-		if ($('#withoutCapture')) {
+		if (withoutCapture) {
 			chrome.runtime.sendMessage({
 				action: 'fetch tabs normally'
 			})
@@ -102,19 +111,13 @@ window.onload = function () {
 	}
 	
 	function fetchwithCapture() {
-	  if($('#withCapture')) {
+	  if(withCapture) {
 		  chrome.runtime.sendMessage({
 			  action: 'fetch tabs with screenshot'
 		  })
     }
 	}
 	
-	fetchWithoutCapture();
-	chrome.tabs.onActivated.addListener(fetchWithoutCapture);
-	chrome.tabs.onRemoved.addListener(fetchWithoutCapture);
-	$('#fetch').click(function () {
-	    fetchwithCapture()
-		}
-  )
+
 	
 };

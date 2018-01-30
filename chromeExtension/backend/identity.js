@@ -14,7 +14,7 @@ function login() {
     xhr.open("GET", "https://www.googleapis.com/oauth2/v2/userinfo?alt=json&access_token=" + token);
     xhr.onload = function () {
       let userDetails = xhr.response;
-      localStorage.setItem('userDetails', JSON.stringify(userDetails));
+      localStorage.setItem('userDetails', userDetails);
     };
     xhr.send()
   })

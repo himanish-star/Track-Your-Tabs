@@ -8,6 +8,9 @@ window.onload = function () {
   let viewParticularBtn = $('#viewParticularBtn');
   let getVisitsBtn = $('#getVisitsBtn');
   let inputURL = $('#inputURL');
+  let userPic = $('#userPic');
+
+  userPic.click(setUserData);
 
   getVisitsBtn.click(function () {
     chrome.runtime.sendMessage({
@@ -77,6 +80,16 @@ window.onload = function () {
       `);
       visitList.prepend(newRow);
     }
+  }
+
+  function setUserData() {
+    let userDetails = localStorage.getItem('userDetails');
+    userDetails = JSON.parse(userDetails);
+    userPic.html("");
+    let newRow = $(`
+			<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="${userDetails.picture}" alt="user" class="profile-pic m-r-10" />${userDetails.name}</a>	
+		`);
+    userPic.append(newRow)
   }
 
   function displayHistory(tabs) {
