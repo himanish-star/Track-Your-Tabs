@@ -19,7 +19,8 @@
     "identity",
     "<all_urls>",
     "history",
-    "tabs"
+    "tabs",
+    "storage"
   ],
 
   "background": {

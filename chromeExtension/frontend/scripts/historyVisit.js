@@ -1,4 +1,5 @@
 window.onload = function () {
+	
 	let visitList = $('#visitList');
 	let getVisitsBtn = $('#getVisitsBtn');
 	let inputURL = $('#inputURL');
@@ -33,6 +34,7 @@ window.onload = function () {
       <tbody>
       </tbody>
     `);
+		
 		for(let i=0; i<visits.length; i++) {
 			let time = visits[i].visitTime;
 			time = new Date(time);

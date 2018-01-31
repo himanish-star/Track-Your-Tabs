@@ -6352,11 +6352,11 @@ File: scss
 
 /*little-profile*/
 .little-profile .pro-img {
-  margin-top: -60px;
+  margin-top: -40px;
   margin-bottom: 20px; }
   .little-profile .pro-img img {
-    width: 64px;
-    height: 64px;
+    width: 32px;
+    height: 32px;
     -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     border-radius: 100%; }

@@ -31,21 +31,30 @@ window.onload = function () {
 
 	function displayInfoWithScreenshot(tabsData) {
 	  if(withCapture) {
-      withCapture.html('');
+	  			
+		    withCapture.html('');
 	    for (let i=0; i<tabsData.length; i++) {
 		    if (tabsData[i].tab.url.startsWith('chrome-extension://')) {
 			    continue;
 		    }
-
+		
+		    /*chrome.storage.sync.set({
+			    'id': 'tab',
+			    'type': true,
+			    'url': tabsData[i].tab.url,
+			    'title': tabsData[i].tab.title,
+			    'imgCode': tabsData[i].url
+		    })*/
+		
 		    let tab = (`
  					<div class="col-lg-4 col-xlg-3 col-md-5">
             <div class="card">
               <img class="card-img-top" src="${tabsData[i].url}" alt="Card image cap" style="width: 100%; height: 100%">
               <div class="card-block little-profile text-center">
               	<div class="pro-img"><img src="${tabsData[i].tab.favIconUrl}" alt="user" /></div>
-              	<h3 class="m-b-0" style="overflow: hidden;">${tabsData[i].tab.title}</h3>
+              	<h3 class="m-b-0" style="overflow: hidden;">${tabsData[i].tab.title.substring(0,20)}</h3>
               	<!--<p>Web Designer &amp; Developer</p>-->
-              	<a href="${tabsData[i].tab.title.substring(0,10)}" class="m-t-10 waves-effect waves-dark btn btn-primary btn-md btn-rounded">Open in new tab</a>
+              	<a href="${tabsData[i].tab.url}" target="_blank" class="m-t-10 waves-effect waves-dark btn btn-outline-primary btn-md btn-rounded">Open in new tab</a>
               	<div class="row text-center m-t-20">
                 	<div class="col-lg-4 col-md-4 m-t-20">
                   	<h3 class="m-b-0 font-light">1099</h3><small>Articles</small></div>
@@ -64,12 +73,23 @@ window.onload = function () {
 	}
 	
 	function displayInfoNormally(tabsData) {
+		
 		if (withoutCapture) {
 			withoutCapture.html('');
+			
 			for (let i = 0; i < tabsData.length; i++) {
+				
 				if (tabsData[i].url.startsWith('chrome-extension://')) {
 					continue;
 				}
+				
+				chrome.storage.sync.set({
+					'id': 'tab',
+					'type': false,
+					'url': tabsData[i].url,
+					'title': tabsData[i].title
+				})
+				
 				let tab = $(`
  					<div class="tab-pane active" id="home" role="tabpanel">
            <div class="card-block">

@@ -37,8 +37,8 @@ window.onload = function () {
           <th scope="row">${i + 1}</th>
           <td class="text-primary" title="${tabs[i].title}">${tabs[i].title ? tabs[i].title.substring(0, 80) : 'no title'}</td>
           <td class="text-danger">${tabs[i].visitCount}</td>
-          <td><a href="${tabs[i].url}" target="_blank" class="visitLink">Visit Link</a></td>
-          <td><button class="btn btn-outline-primary copyToClipboard" id="copyToClip${i}" data-id="${tabs[i].url}"class="copyToClipboard">Copy To Clipboard</button></td>
+          <td><a href="${tabs[i].url}" target="_blank" class="visitLink">Visit</a></td>
+          <td align="center"><button  class="btn btn-outline-primary copyToClipboard" id="copyToClip${i}" data-id="${tabs[i].url}"class="copyToClipboard"> <i class="fa fa-clipboard"></i></button></td>
         </tr>
       `);
 	    historyList.append(newRow);
@@ -49,9 +49,17 @@ window.onload = function () {
   function setClipBoardData(size) {
 
     for(let i = 0 ; i < size ;i++) {
-	     let el = document.getElementById('copyToClip' + i);
+	    let el = document.getElementById('copyToClip' + i);
 
 	    el.onclick = function () {
+		    let selectedText = el.getAttribute('data-id');
+		    selectedText.select;
+		    document.execCommand('copy');
+		    
+	    }
+	    
+	     
+	     /*el.onclick = function () {
 		    document.execCommand('copy')
 	    }
 	
@@ -62,7 +70,7 @@ window.onload = function () {
 			    console.log(event.target.getAttribute('data-id'))
 			    event.clipboardData.setData('text/plain', event.target.getAttribute('data-id'))
 		    }
-	    })
+	    })*/
     }
   }
   
