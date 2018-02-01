@@ -1,5 +1,11 @@
 window.onload = function () {
+  let userPic = $('#userPic');
   let historyList = $('#historyList');
+  let userDetails = JSON.parse(localStorage.getItem('userDetails'));
+
+  if(userDetails){
+    setUserData();
+  }
 
   chrome.runtime.sendMessage({
     action: "fetch history of tabs opened in the past"
@@ -53,23 +59,12 @@ window.onload = function () {
     }
   }
 
-  /*function setClipBoardData(size) {
-    for(let i = 0 ; i < size ;i++) {
-      let el = document.getElementById('copyToClip' + i);
-      el.onclick = function () {
-        console.log('sda');
-        document.execCommand('copy')
-      }
-
-      el.addEventListener('copy', function (event) {
-        event.preventDefault();
-
-        if (event.clipboardData) {
-          event.clipboardData.setData('text/plain', event.target.getAttribute('data-id'))
-        }
-      })
-    }
-  }*/
-  
+  function setUserData() {
+    userPic.html("");
+    let newRow = $(`
+			<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="${userDetails.image.url}" alt="user" class="profile-pic m-r-10" />${userDetails.displayName}</a>
+		`);
+    userPic.append(newRow)
+  }
 };
 

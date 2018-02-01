@@ -1,8 +1,24 @@
 window.onload = function () {
 	let userPic = $('#userPic');
+	let userDetails = JSON.parse(localStorage.getItem('userDetails'));
 	let fetch = $('#fetch');
   let withCapture = $('#withCapture');
   let withoutCapture = $('#withoutCapture');
+	let logoutBtn = $('#logoutBtn');
+
+	userPic.click(function () {
+    if(userPic.text().trim('') === 'Login') {
+      chrome.runtime.sendMessage({
+        action:'open login'
+      });
+    }
+  })
+
+	logoutBtn.click(function () {
+    chrome.runtime.sendMessage({
+      action: "logout"
+    })
+  });
 
   fetchWithoutCapture();
 
@@ -11,7 +27,9 @@ window.onload = function () {
     }
   );
 
-	userPic.click(setUserData);
+	if(userDetails){
+	  setUserData();
+  }
 
   chrome.tabs.onActivated.addListener(fetchWithoutCapture);
   chrome.tabs.onRemoved.addListener(fetchWithoutCapture);
@@ -26,6 +44,10 @@ window.onload = function () {
 			case 'tabs fetched normally':
 				displayInfoNormally(message.tabs);
 				break;
+      case 'credentials fetched':
+        userDetails = JSON.parse(localStorage.getItem('userDetails'));
+        setUserData();
+        break;
 		}
 	});
 
@@ -94,10 +116,9 @@ window.onload = function () {
 	}
 	
 	function setUserData() {
-		let userDetails = JSON.parse(localStorage.getItem('userDetails'));
 		userPic.html("");
 		let newRow = $(`
-			<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="${userDetails.picture}" alt="user" class="profile-pic m-r-10" />${userDetails.name}</a>
+			<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="${userDetails.image.url}" alt="user" class="profile-pic m-r-10" />${userDetails.displayName}</a>
 		`);
 		userPic.append(newRow)
 	}
