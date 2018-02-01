@@ -1,8 +1,24 @@
 window.onload = function () {
 	let userPic = $('#userPic');
+	let userDetails = JSON.parse(localStorage.getItem('userDetails'));
 	let fetch = $('#fetch');
   let withCapture = $('#withCapture');
   let withoutCapture = $('#withoutCapture');
+	let logoutBtn = $('#logoutBtn');
+
+	userPic.click(function () {
+    if(userPic.text().trim('') === 'Login') {
+      chrome.runtime.sendMessage({
+        action:'open login'
+      });
+    }
+  })
+
+	logoutBtn.click(function () {
+    chrome.runtime.sendMessage({
+      action: "logout"
+    })
+  });
 
   fetchWithoutCapture();
 
@@ -11,7 +27,9 @@ window.onload = function () {
     }
   );
 
-	userPic.click(setUserData);
+	if(userDetails){
+	  setUserData();
+  }
 
   chrome.tabs.onActivated.addListener(fetchWithoutCapture);
   chrome.tabs.onRemoved.addListener(fetchWithoutCapture);
@@ -26,6 +44,10 @@ window.onload = function () {
 			case 'tabs fetched normally':
 				displayInfoNormally(message.tabs);
 				break;
+      case 'credentials fetched':
+        userDetails = JSON.parse(localStorage.getItem('userDetails'));
+        setUserData();
+        break;
 		}
 	});
 
@@ -34,7 +56,7 @@ window.onload = function () {
 	  			
 		    withCapture.html('');
 	    for (let i=0; i<tabsData.length; i++) {
-		    if (tabsData[i].tab.url.startsWith('chrome-extension://')) {
+		    if (tabsData[i].tab.url.startsWith('chrome') ) {
 			    continue;
 		    }
 		
@@ -55,14 +77,14 @@ window.onload = function () {
               	<h3 class="m-b-0" style="overflow: hidden;">${tabsData[i].tab.title.substring(0,20)}</h3>
               	<!--<p>Web Designer &amp; Developer</p>-->
               	<a href="${tabsData[i].tab.url}" target="_blank" class="m-t-10 waves-effect waves-dark btn btn-outline-primary btn-md btn-rounded">Open in new tab</a>
-              	<div class="row text-center m-t-20">
+              	<!--<div class="row text-center m-t-20">
                 	<div class="col-lg-4 col-md-4 m-t-20">
                   	<h3 class="m-b-0 font-light">1099</h3><small>Articles</small></div>
                 	<div class="col-lg-4 col-md-4 m-t-20">
                   	<h3 class="m-b-0 font-light">23,469</h3><small>Followers</small></div>
                 	<div class="col-lg-4 col-md-4 m-t-20">
                   	<h3 class="m-b-0 font-light">6035</h3><small>Following</small></div>
-              	</div>
+              	</div>-->
            	 	</div>
           	</div>
         	</div>
@@ -79,7 +101,7 @@ window.onload = function () {
 			
 			for (let i = 0; i < tabsData.length; i++) {
 				
-				if (tabsData[i].url.startsWith('chrome-extension://')) {
+				if (tabsData[i].url.startsWith('chrome')) {
 					continue;
 				}
 				
@@ -114,10 +136,9 @@ window.onload = function () {
 	}
 	
 	function setUserData() {
-		let userDetails = JSON.parse(localStorage.getItem('userDetails'));
 		userPic.html("");
 		let newRow = $(`
-			<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="${userDetails.picture}" alt="user" class="profile-pic m-r-10" />${userDetails.name}</a>
+			<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="${userDetails.image.url}" alt="user" class="profile-pic m-r-10" />${userDetails.displayName}</a>
 		`);
 		userPic.append(newRow)
 	}
